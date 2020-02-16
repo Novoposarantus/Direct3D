@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameException.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -160,15 +161,23 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dxerr.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameException.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="MouseDevice.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SystemWin.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowsMessageMap.h" />
+    <ClInclude Include="WindowsThrowMacros.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorDescription.inl" />
+    <None Include="DXGetErrorString.inl" />
+    <None Include="DXTrace.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

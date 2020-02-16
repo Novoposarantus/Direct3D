@@ -11,15 +11,25 @@ class Window
 public:
 	class Exception : public GameException
 	{
+		using GameException::GameException;
 	public:
-		Exception(int line, const char* file, HRESULT hr) noexcept;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+	};
+	class HrException : public Exception
+	{
+		HrException(int line, const char* file, HRESULT hr) noexcept;
 		const char* what() const noexcept override;
 		const char* GetType() const noexcept override;
-		static std::string TranslateErrorCode(HRESULT hr) noexcept;
 		HRESULT GetErrorCode() const noexcept;
-		std::string GetErrorString() const noexcept;
+		std::string GetErrorDescription() const noexcept;
 	private:
 		HRESULT hr;
+	};
+	class NoGfxException : public Exception
+	{
+	public:
+		using Exception::Exception;
+		const char* GetType() const noexcept override;
 	};
 private:
 	class WindowClass 
@@ -56,6 +66,3 @@ private:
 	HWND hWnd;
 	std::unique_ptr<Graphics> pGfx;
 };
-
-#define GHWND_EXCEPT(hr) Window::Exception(__LINE__, __FILE__, hr)
-#define GHWND_LAST_EXCEPT() Window::Exception(__LINE__, __FILE__, GetLastError())
