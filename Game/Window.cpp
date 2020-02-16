@@ -68,6 +68,8 @@ Window::Window(int width, int height, const char* name)
 	}
 
 	ShowWindow(hWnd, SW_SHOWDEFAULT);
+	// create graphics object
+	pGfx = std::make_unique<Graphics>(hWnd);
 }
 
 Window::~Window()
@@ -85,6 +87,11 @@ int Window::ProcessMessages()
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
+}
+
+Graphics& Window::Gfx()
+{
+	return *pGfx;
 }
 
 LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
