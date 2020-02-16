@@ -17,6 +17,7 @@ public:
 	};
 	class HrException : public Exception
 	{
+	public:
 		HrException(int line, const char* file, HRESULT hr) noexcept;
 		const char* what() const noexcept override;
 		const char* GetType() const noexcept override;
