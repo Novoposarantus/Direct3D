@@ -13,4 +13,6 @@ private:
 private:
 	Window wnd;
 	Timer timer;
+	int width;
+	int height;
 };
