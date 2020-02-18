@@ -5,23 +5,31 @@
 
 
 Box::Box( Graphics& gfx,
-	std::mt19937& rng,
-	std::uniform_real_distribution<float>& adist,
-	std::uniform_real_distribution<float>& ddist,
-	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist,
-	std::uniform_real_distribution<float>& bdist )
+	float r,
+	float droll,
+	float dpitch,
+	float dyaw,
+	float dphi,
+	float dtheta,
+	float dchi,
+	float chi,
+	float theta,
+	float phi,
+	float sizeX,
+	float sizeY,
+	float sizeZ
+	)
 	:
-	r( rdist( rng ) ),
-	droll( ddist( rng ) ),
-	dpitch( ddist( rng ) ),
-	dyaw( ddist( rng ) ),
-	dphi( odist( rng ) ),
-	dtheta( odist( rng ) ),
-	dchi( odist( rng ) ),
-	chi( adist( rng ) ),
-	theta( adist( rng ) ),
-	phi( adist( rng ) )
+	r(r),
+	droll(droll),
+	dpitch(dpitch),
+	dyaw(dyaw),
+	dphi(dphi),
+	dtheta(dtheta),
+	dchi(dchi),
+	chi(chi),
+	theta(theta),
+	phi(phi)
 {
 	namespace dx = DirectX;
 
@@ -86,7 +94,7 @@ Box::Box( Graphics& gfx,
 	// model deformation transform (per instance, not stored as bind)
 	dx::XMStoreFloat3x3(
 		&mt,
-		dx::XMMatrixScaling( 1.0f,1.0f,bdist( rng ) )
+		dx::XMMatrixScaling( sizeX, sizeY, sizeZ )
 	);
 }
 
@@ -103,9 +111,8 @@ void Box::Update( float dt ) noexcept
 DirectX::XMMATRIX Box::GetTransformXM() const noexcept
 {
 	namespace dx = DirectX;
-	return dx::XMLoadFloat3x3( &mt ) *
-		dx::XMMatrixRotationRollPitchYaw( pitch,yaw,roll ) *
-		dx::XMMatrixTranslation( r,0.0f,0.0f ) *
-		dx::XMMatrixRotationRollPitchYaw( theta,phi,chi ) *
-		dx::XMMatrixTranslation( 0.0f,0.0f,20.0f );
+	return dx::XMLoadFloat3x3(&mt) *
+		dx::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
+		dx::XMMatrixTranslation(r, 0.0f, 0.0f) *
+		dx::XMMatrixRotationRollPitchYaw(theta, phi, chi);
 }

@@ -162,6 +162,16 @@ DirectX::XMMATRIX Graphics::GetProjection() const noexcept
 	return projection;
 }
 
+void Graphics::SetCamera(DirectX::FXMMATRIX cam) noexcept
+{
+	camera = cam;
+}
+
+DirectX::XMMATRIX Graphics::GetCamera() const noexcept
+{
+	return camera;
+}
+
 Graphics::HrException::HrException(int line, const char* file, HRESULT hr, std::vector<std::string> infoMsgs) noexcept
 	:
 	Exception(line, file),

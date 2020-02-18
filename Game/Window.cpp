@@ -174,13 +174,13 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 			}
 		}
 	}
-	case WM_LBUTTONDOWN: 
+	case WM_LBUTTONDBLCLK:
 	{
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnLeftPressed(pt.x, pt.y);
 		break;
 	}
-	case WM_RBUTTONDOWN:
+	case WM_RBUTTONDBLCLK:
 	{
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnRightPressed(pt.x, pt.y);
