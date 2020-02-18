@@ -462,6 +462,20 @@ void Graphics::PongBall(float time)
 	GFX_THROW_INFO_ONLY(pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
 }
 
+void Graphics::Restart()
+{
+	if (!gameStop) return;
+
+	leftBoxPosition = 0.5;
+	rightBoxPosition = 0.5;
+	directionX = -0.005;
+	directionY = 0.005;
+	ballLocationX = 0;
+	ballLocationY = 0;
+	lastSpeedTime = 0;
+	gameStop = false;
+}
+
 Graphics::HrException::HrException(int line, const char* file, HRESULT hr, std::vector<std::string> infoMsgs) noexcept
 	:
 	Exception(line, file),

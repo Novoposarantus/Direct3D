@@ -55,6 +55,7 @@ public:
 	void ClearBuffer(float red, float green, float blue) noexcept;
 	void PongBlock(bool isUp, bool isDown,bool isLeft);
 	void PongBall(float time);
+	void Restart();
 private:
 #ifndef  NDEBUG
 	DxgiInfoManager infoManager;
