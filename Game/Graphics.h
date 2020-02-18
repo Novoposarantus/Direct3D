@@ -54,8 +54,6 @@ public:
 	void EndFrame();
 	void ClearBuffer(float red, float green, float blue) noexcept;
 	void DrawTestTriangle(float angle, float x, float y);
-	void PongBlock(bool isUp, bool isDown,bool isLeft);
-	void PongBall(float time);
 private:
 #ifndef  NDEBUG
 	DxgiInfoManager infoManager;
@@ -64,14 +62,4 @@ private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwap = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> pContext = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget = nullptr;
-
-	float leftBoxPosition;
-	float rightBoxPosition;
-	float directionX = -0.005;
-	float directionY = 0.005;
-	float ballLocationX = 0;
-	float ballLocationY = 0;
-	int lastSpeedTime = 0;
-public:
-	bool gameStop = false;
 };
