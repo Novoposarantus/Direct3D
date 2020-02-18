@@ -35,7 +35,7 @@ void Game::DoFrame()
 		const float c = sin(timer.Peek()) / 2.0f + 0.5f;
 		wnd.Gfx().ClearBuffer(c, c, 1.0f);
 		if (wnd.kbd.KeyIsPressed(VK_RETURN)) {
-s			wnd.Gfx().Restart();
+			wnd.Gfx().Restart();
 		}
 	}
 	else
