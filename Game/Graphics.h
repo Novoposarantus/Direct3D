@@ -53,7 +53,6 @@ public:
 	~Graphics() = default;
 	void EndFrame();
 	void ClearBuffer(float red, float green, float blue) noexcept;
-	void DrawTestTriangle(float angle, float x, float y);
 	void PongBlock(bool isUp, bool isDown,bool isLeft);
 	void PongBall(float time);
 private:

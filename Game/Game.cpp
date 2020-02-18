@@ -31,8 +31,7 @@ int Game::Go()
 
 void Game::DoFrame()
 {
-	//Pong
-	/*if (wnd.Gfx().gameStop) {
+	if (wnd.Gfx().gameStop) {
 		const float c = sin(timer.Peek()) / 2.0f + 0.5f;
 		wnd.Gfx().ClearBuffer(c, c, 1.0f);
 	}
@@ -51,12 +50,7 @@ void Game::DoFrame()
 		);
 
 		wnd.Gfx().PongBall(timer.Peek());
-	}*/
-	//End Pong
-
-	//Отрисовка треугольника
-	wnd.Gfx().ClearBuffer(0, 0, 0);
-	wnd.Gfx().DrawTestTriangle(timer.Peek(), wnd.mouse.GetPosX(), wnd.mouse.GetPosY());
+	}
 	
 	wnd.Gfx().EndFrame();
 }
