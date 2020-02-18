@@ -23,11 +23,4 @@ struct Vertex3D
 		float y;
 		float z;
 	} pos;
-	struct
-	{
-		unsigned char r;
-		unsigned char g;
-		unsigned char b;
-		unsigned char a;
-	} color;
 };

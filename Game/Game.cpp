@@ -5,16 +5,7 @@
 
 Game::Game()
 	:
-	wnd(800, 600, "My Window"),
-	width(800),
-	height(600)
-{}
-
-Game::Game(int width, int height, const char* name)
-	:
-	wnd(width, height, name),
-	width(width),
-	height(height)
+	wnd(800, 600, "My Window")
 {}
 
 int Game::Go()
@@ -55,8 +46,13 @@ void Game::DoFrame()
 	//End Pong
 
 	//Отрисовка треугольника
-	wnd.Gfx().ClearBuffer(0, 0, 0);
-	wnd.Gfx().DrawTestTriangle(timer.Peek(), wnd.mouse.GetPosX(), wnd.mouse.GetPosY());
+	const float c = sin(timer.Peek()) / 2.0f + 0.5f;
+	wnd.Gfx().ClearBuffer(c, c, 1.0f);
+	wnd.Gfx().DrawTestTriangle(
+		timer.Peek(),
+		wnd.mouse.GetPosX() / 400.0f - 1.0f,
+		-wnd.mouse.GetPosY() / 300.0f + 1.0f
+	);
 	
 	wnd.Gfx().EndFrame();
 }

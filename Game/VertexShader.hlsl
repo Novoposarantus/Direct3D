@@ -1,14 +1,16 @@
-struct VSOut
-{
-	float3 color : Color;
-	float4 pos : SV_Position;
-};
 
-cbuffer CBuf
-{
-	matrix transform;
-};
 //Pong shader
+//struct VSOut
+//{
+//	float3 color : Color;
+//	float4 pos : SV_Position;
+//};
+//
+//cbuffer CBuf
+//{
+//	matrix transform;
+//};
+
 //VSOut main(float2 pos : Position, float3 color : Color)
 //{
 //	VSOut vso;
@@ -19,10 +21,12 @@ cbuffer CBuf
 //end pong shader
 
 
-VSOut main(float3 pos : Position, float4 color : Color)
+cbuffer CBuf
 {
-	VSOut vso;
-	vso.pos = mul(float4(pos, 1.0f), transform);
-	vso.color = color;
-	return vso;
+	matrix transform;
+};
+
+float4 main(float3 pos : Position) : SV_Position
+{
+	return mul(float4(pos,1.0f),transform);
 }
