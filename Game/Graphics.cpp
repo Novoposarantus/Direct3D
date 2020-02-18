@@ -259,6 +259,7 @@ void Graphics::DrawTestTriangle(float angle, float x, float y)
 	GFX_THROW_INFO_ONLY(pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
 }
 
+//Pong start
 void Graphics::PongBlock(bool isUp, bool isDown, bool isLeft)
 {
 	HRESULT hr;
@@ -620,6 +621,7 @@ void Graphics::PongBall(float time)
 
 	GFX_THROW_INFO_ONLY(pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
 }
+//pong end
 
 Graphics::HrException::HrException(int line, const char* file, HRESULT hr, std::vector<std::string> infoMsgs) noexcept
 	:
