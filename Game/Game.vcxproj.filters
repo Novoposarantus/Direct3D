@@ -105,6 +105,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Box2.cpp">
+      <Filter>Source Files\Drawable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowsMessageMap.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="CameraChangeEnum.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Box2.h">
+      <Filter>Header Files\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

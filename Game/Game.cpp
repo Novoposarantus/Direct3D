@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Box.h"
+#include "Box2.h"
 #include <memory>
 #include "CameraChangeEnum.h"
 
@@ -9,7 +10,7 @@ Game::Game()
 	:
 	wnd(800, 600, "My Window")
 {
-	drawables.push_back(std::make_unique<Box>(
+	drawables.push_back(new Box(
 		wnd.Gfx(), 
 		7,
 		0, //вокруг себя
@@ -25,21 +26,26 @@ Game::Game()
 		1, //размер по Y
 		1  //размер по Z
 	));
-	drawables.push_back(std::make_unique<Box>(
+	drawables.push_back(new Box(
 		wnd.Gfx(),
 		0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 5, 5, 5
 		));
-	drawables.push_back(std::make_unique<Box>(
+	drawables.push_back(new Box(
 		wnd.Gfx(),
 		9, 0, 1, 1, 1, -2, 0, 0, 0, 0, 2, 2, 2
 		));
-	drawables.push_back(std::make_unique<Box>(
+	drawables.push_back(new Box(
 		wnd.Gfx(),
 		12, 0, 0, 1, 0, 0, -2, 0, 0, 0, 2, 2, 2
 		));
-	drawables.push_back(std::make_unique<Box>(
+	Drawable* parent = new Box(
 		wnd.Gfx(),
 		16, 0, 1, 1, 0.5, 0, 0, 0, 0, 0, 3, 3, 3
+		);
+	drawables.push_back(parent);
+	drawables.push_back(new Box2(
+		wnd.Gfx(),
+		4, 0, 1, 1, 4, 0, 0, 0, 0, 0, 2, 2, 2, parent
 		));
 	cam.AdjustPosition(cam.GetBackwardVector() * 25);
 	cam.AdjustPosition(0.0f, 8, 0.0f);
@@ -110,9 +116,6 @@ void Game::DoFrame()
 	{
 		cam.AdjustPosition(0.0f, -cameraSpeed, 0.0f);
 	}
-	/*if (wnd.mouse.LeftIsPressed()) {
-		cam.AdjustRotation((float)wnd.mouse.GetPosY() * 0.01f, (float)wnd.mouse.GetPosX() * 0.01f, 0);
-	}*/
 	wnd.Gfx().SetCamera(cam.GetViewMatrix());
 #pragma endregion CameraUpdate
 

@@ -18,9 +18,10 @@ public:
 		float sizeX,
 		float sizeY,
 		float sizeZ);
-	void Update( float dt ) noexcept override;
-	DirectX::XMMATRIX GetTransformXM() const noexcept override;
-private:
+	Box() = default;
+	virtual void Update( float dt ) noexcept override;
+	virtual DirectX::XMMATRIX GetTransformXM() const noexcept override;
+protected:
 	// positional
 	float r;
 	float roll = 0.0f;

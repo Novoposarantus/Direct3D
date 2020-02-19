@@ -15,5 +15,5 @@ private:
 	Window wnd;
 	Timer timer;
 	Camera cam;
-	std::vector<std::unique_ptr<class Drawable>> drawables;
+	std::vector<class Drawable*> drawables;
 };
